@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package gameplay_system;
+
+import "GameplaySystem.proto";
+
+message StatBlockFile
+{
+	repeated StatBlock stat_blocks = 1;
+}
+
+message AttributeFile
+{
+	repeated Attribute attributes = 1;
+}
+
+message AbilityFile
+{
+	repeated Ability abilities = 1;
+}
+
+message ClassLevelFile
+{
+	repeated ClassLevel class_levels = 1;
+}
+
+message CharacterFile
+{
+	repeated Character characters = 1;
+}
+
+message MonsterFile
+{
+	repeated Monster monters = 1;
+}

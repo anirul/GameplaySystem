@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package gameplay_system;
+
+// Basic stats for all character and NPCs.
+// This should be enough to handle combat for NPCs.
+// Next: 7
+message StatBlock
+{
+	int32 strength = 1;
+	int32 dexterity = 2;
+	int32 constitution = 3;
+	int32 intelligence = 4;
+	int32 wisdom = 5;
+	int32 charisma = 6;
+}
+
+// Attribute this store life and mana for player and enemies.
+// Next: 4
+message Attribute
+{
+	enum AttributeType
+	{
+		ILLEGAL = 0;
+		LIFE = 1;
+		MANA = 2;
+		ENERGY = 3;
+		RAGE = 4;
+	}
+	AttributeType attribute_type = 1;
+	int32 current = 2;
+	int32 max = 3;
+}
+
+// Abilities
+// This can be spell too, this is suppose to describe the change of a spell or
+// ability, All classes and character will have an attack and a defence ability,
+// probably the multiple defense will be limited to tank?
+// Next: 11
+message Ability
+{
+	string name = 1;
+	enum AbilityType 
+	{
+		ILLEGAL = 0;
+		ATTACK_SINGLE_TARGET = 1;
+		ATTACK_MULITPLE_TARGET = 2;
+		DEFEND_SINGLE_TARGET = 3;
+		DEFEND_MULTIPLE_TARGET = 4;
+		HELP_SINGLE_TARGET = 5;
+		HELP_MULTIPLE_TARGET = 6;
+		BUFF_SINGLE_TARGET = 7;
+		BUFF_MULTIPLE_TARGET = 8;
+		DEBUFF_SINGLE_TARGET = 9;
+		DEBUFF_MULTIPLE_TARGET = 10;
+	}
+	AbilityType spell_type = 2;
+	int32 max_targets = 3;
+	StatBlock sb_modification = 4;
+	repeated Attribute attribute_modifications = 5;
+	float duration_s = 6;
+	float casting_s = 7;
+	float cooldown_s = 8;
+	float channelling_s = 9;
+	float range_m = 10;
+}
+
+// This will describe a level of a class, this include abilities that are in
+// level class range.
+// Next: 4
+message ClassLevel
+{
+	string name = 1;
+	int32 level = 2;
+	repeated Ability abilities = 3;
+}
+
+// This will describe a character (playable).
+// Next: 5
+message Character
+{
+	string name = 1;
+	repeated Attribute attributes = 2;
+	StatBlock stat_block = 3;
+	ClassLevel class_level = 4;
+}
+
+// This will describe a NPC (non playable character) like the enemies.
+// Next: 5
+message Monster
+{
+	string name = 1;
+	repeated Attribute attributes = 2;
+	StatBlock stat_block = 3;
+	repeated Ability abilities = 4;
+}
