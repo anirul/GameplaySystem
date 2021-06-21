@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package gameplay_system;
+
+import "GameplaySystem.proto";
+
+message ClassLevelFile
+{
+	repeated ClassLevel class_levels = 1;
+}
+
+message CharacterFile
+{
+	repeated Character characters = 1;
+}
+
+message MonsterFile
+{
+	repeated Monster monsters = 1;
+}

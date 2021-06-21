@@ -1,6 +1,6 @@
 # Gameplay System Proto Tests.
 
-add_executable(GameplaySystemProtoTest
+add_executable(ProtoTest
     main.cpp
     GameplaySystemTest.cpp
     GameplaySystemTest.h
@@ -8,16 +8,16 @@ add_executable(GameplaySystemProtoTest
     FileTest.h
 )
 
-target_include_directories(GameplaySystemProtoTest
+target_include_directories(ProtoTest
   PUBLIC
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
-    GameplaySystemProto
+    Proto
 )
 
-target_link_libraries(GameplaySystemProtoTest
+target_link_libraries(ProtoTest
   PUBLIC
-    GameplaySystemProto
+    Proto
     GTest::gmock
     GTest::gtest
 )

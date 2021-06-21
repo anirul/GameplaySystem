@@ -10,8 +10,8 @@ find_package(Protobuf CONFIG REQUIRED)
 
 if(WIN32)
     # Standard MSVC flags.
-    add_compile_options("/std:c++latest")
+    add_compile_options("/std:c++17")
     add_compile_options("/D _WIN32_WINNT=0x0A00")
 endif(WIN32)
 
-add_subdirectory(GameplaySystem)
+add_subdirectory(Proto)
